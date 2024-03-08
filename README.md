@@ -1,6 +1,8 @@
 # Number of Endpoints Tested Daily Goal Tracker
 
 > Simple Static Web Application I created to Track my daily endpoints tested goals. (Personal Use - not a project)
+>
+> URL: https://shreyaschavhan.github.io/endpoints-tested-goal-tracker/
 
 ---
 
