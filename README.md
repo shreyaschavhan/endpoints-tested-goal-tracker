@@ -1,2 +1,10 @@
-# endpoints-tested-goal-tracker
-Endponts tested daily goal tracker application for personal use
+# Number of Endpoints Tested Daily Goal Tracker
+
+> Simple Static Web Application I created to Track my daily endpoints tested goals. (Personal Use - not a project)
+
+---
+
+![image](https://github.com/shreyaschavhan/endpoints-tested-goal-tracker/assets/68887544/e03c28f8-ca73-4474-85ab-cb33bb0b12fd)
+
+
+
