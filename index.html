@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Endpoint Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main>
+        <h1>Number of Endpoints Tested Daily Goal Tracker</h1>
+        <div id="counter">0</div>
+        <div class="button">
+            <button id="add">+1</button>
+            <button id="subtract">-1</button>
+            <button id="reset">Reset</button>
+        </div>
+        <div class="goal">
+            <div>
+        <label for="goal">Set Daily Goal:</label>
+        <input type="number" id="goal" min="1" value="100">
+    </div>
+        <button id="setGoal">Set</button>
+    </div>
+    </main>
+    <script>
+        const counterDisplay = document.getElementById('counter');
+        const addButton = document.getElementById('add');
+        const subtractButton = document.getElementById('subtract');
+        const resetButton = document.getElementById('reset');
+        const goalInput = document.getElementById('goal');
+        const setGoalButton = document.getElementById('setGoal');
+        let count = 0;
+
+        // Initialize goal for the day
+        let goal = localStorage.getItem('goal') || 100;
+        goalInput.value = goal;
+
+        // Update counter display
+        function updateCounter() {
+            counterDisplay.textContent = count;
+        }
+
+        // Event listeners for buttons
+        addButton.addEventListener('click', () => {
+            count++;
+            updateCounter();
+            checkGoal();
+        });
+
+        subtractButton.addEventListener('click', () => {
+            if (count > 0) {
+                count--;
+                updateCounter();
+            }
+        });
+
+        resetButton.addEventListener('click', () => {
+            count = 0;
+            updateCounter();
+        });
+
+        setGoalButton.addEventListener('click', () => {
+            goal = parseInt(goalInput.value);
+            localStorage.setItem('goal', goal);
+            alert("Daily goal set successfully.");
+        });
+
+        // Check if daily goal is reached
+        function checkGoal() {
+            if (count == goal) {
+                alert("Congratulations! You've reached your daily goal.");
+            }
+        }
+
+        // Reset goal at the start of each day
+        const now = new Date();
+        const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+        const endOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+        const timeToReset = endOfDay.getTime() - now.getTime();
+
+        setTimeout(() => {
+            count = 0;
+            updateCounter();
+            localStorage.setItem('goal', goal); // Resetting goal to the last set value
+            goalInput.value = goal;
+        }, timeToReset);
+    </script>
+</body>
+
+</html>
